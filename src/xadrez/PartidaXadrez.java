@@ -2,7 +2,10 @@ package xadrez;
 
 //Regras do jogo de xadrez
 
+import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
+import xadrez.pecas.Rei;
+import xadrez.pecas.Torre;
 
 public class PartidaXadrez {
 
@@ -10,6 +13,7 @@ public class PartidaXadrez {
 
     public PartidaXadrez(){
         tabuleiro = new Tabuleiro(8,8);
+        iniciarPartida();
     }
 
     public PartidaXadrez(Tabuleiro tabuleiro) {
@@ -27,5 +31,11 @@ public class PartidaXadrez {
             }
         }
         return mat;
+    }
+
+    //Iniciar partida
+    private void iniciarPartida(){
+        tabuleiro.colocarPeca(new Torre(tabuleiro,Color.WHITE),new Posicao(2,1));
+        tabuleiro.colocarPeca(new Rei(tabuleiro,Color.BLACK), new Posicao(0,4));
     }
 }
