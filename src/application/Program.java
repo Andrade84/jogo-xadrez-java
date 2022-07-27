@@ -2,11 +2,13 @@ package application;
 
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
+import xadrez.PartidaXadrez;
 
 public class Program {
 
     public static void main(String[] args) {
 
-        Tabuleiro tabuleiro = new Tabuleiro(8,8); // criando um tabuleiro 8x8
+        PartidaXadrez partidaXadrez = new PartidaXadrez();
+        UI.imprimeTabuleiro(partidaXadrez.getPieces());
     }
 }
