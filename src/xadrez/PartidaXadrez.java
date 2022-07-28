@@ -2,6 +2,7 @@ package xadrez;
 
 //Regras do jogo de xadrez
 
+import tabuleiro.Peca;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
 import xadrez.pecas.Rei;
@@ -31,6 +32,33 @@ public class PartidaXadrez {
             }
         }
         return mat;
+    }
+
+    public PecaXadrez movimentarPeca(XadrezPosition posicaoOrigem, XadrezPosition posicaoDestino){
+       //converter posições para posições da matriz
+        Posicao origem = posicaoOrigem.toPosition();
+        Posicao destino = posicaoDestino.toPosition();
+
+        //Há peça na posição de origem antes do movimento
+        validarPosicaoDeOrigem(origem);
+        Peca pecaCapturada = fazerMovimento(origem,destino);
+        return (PecaXadrez) pecaCapturada;
+    }
+
+    private Peca fazerMovimento(Posicao origem, Posicao destino){
+        //remover peça que está na posição de origem
+        Peca p = tabuleiro.removerPeca(origem);
+        Peca pecaCapturada = tabuleiro.removerPeca(destino);//remover peça da posição de destino
+        //Colocar a peça da posição de origem na posição de destino
+        tabuleiro.colocarPeca(p,destino);
+        return pecaCapturada;
+    }
+
+    private void validarPosicaoDeOrigem(Posicao pos){
+        //se não existir uma peça nessa posição
+        if(!tabuleiro.posicaoExiste(pos)){
+            throw new XadrezException("Não existe peça na posição de origem!");
+        }
     }
 
     //receber as coordenadas do xadrez

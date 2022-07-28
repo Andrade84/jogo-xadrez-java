@@ -48,6 +48,21 @@ public class Tabuleiro {
             peca.posicao = posicao;
     }
 
+    public Peca removerPeca(Posicao posicao){
+        if(!posicaoExiste(posicao)){
+            throw new TabuleiroException("Posição não existe no tabuleiro");
+        }
+        //não há nenhuma peça nessa posição
+        if(peca(posicao) == null){
+            return null;
+        }
+        //Retirar peça do tabuleiro
+        Peca aux = peca(posicao);
+        aux.posicao = null; //peça removida do tabuleiro
+        pecas[posicao.getLinha()][posicao.getColuna()] = null; //não há mais peça nessa posição da matriz
+        return aux;
+    }
+
 
     private boolean posicaoExiste(int linha, int coluna){
         return linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas;

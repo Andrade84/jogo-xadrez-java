@@ -3,12 +3,31 @@ package application;
 import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
 import xadrez.PartidaXadrez;
+import xadrez.PecaXadrez;
+import xadrez.XadrezPosition;
+
+import java.util.Scanner;
 
 public class Program {
 
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
         PartidaXadrez partidaXadrez = new PartidaXadrez();
-        UI.imprimeTabuleiro(partidaXadrez.getPieces());
+
+        while(true){
+            UI.imprimeTabuleiro(partidaXadrez.getPieces());
+            System.out.println();
+            System.out.print("Origem: ");
+            XadrezPosition origem = UI.lerPosicaoNoXadrez(sc);
+
+            System.out.println();
+            System.out.print("Destino: ");
+            XadrezPosition destino = UI.lerPosicaoNoXadrez(sc);
+
+            PecaXadrez pecaCapturada = partidaXadrez.movimentarPeca(origem,destino);
+        }
+
+
     }
 }

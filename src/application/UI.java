@@ -2,6 +2,10 @@ package application;
 
 import xadrez.Color;
 import xadrez.PecaXadrez;
+import xadrez.XadrezPosition;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class UI {
 
@@ -25,6 +29,19 @@ public class UI {
     public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+    //Ler posicao do usuário a1 ler a = linha 1 = coluna
+    public static XadrezPosition lerPosicaoNoXadrez(Scanner sc){
+        try {
+            String s = sc.nextLine();
+            char coluna = s.charAt(0); // ler a
+            int linha = Integer.parseInt(s.substring(1));//ler 1
+            return new XadrezPosition(coluna,linha);
+        }
+        catch (RuntimeException e){
+            throw new InputMismatchException("Erro ao ler posicao no xadrez. valido apenas posicoes de a1 até h8 ");
+        }
+    }
 
     public static void imprimeTabuleiro(PecaXadrez[][] pecas) {
         for (int i = 0; i < pecas.length; i++){
