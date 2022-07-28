@@ -33,11 +33,17 @@ public class PartidaXadrez {
         return mat;
     }
 
+    //receber as coordenadas do xadrez
+    //Informar coordenadas no sistema do xadrez e não da matriz
+    private void colocarNovaPeca(char coluna, int linha , PecaXadrez peca){
+        tabuleiro.colocarPeca(peca, new XadrezPosition(coluna,linha).toPosition());
+    }
+
     //Iniciar partida
     private void iniciarPartida(){
-        tabuleiro.colocarPeca(new Torre(tabuleiro,Color.WHITE),new Posicao(2,1));
-        tabuleiro.colocarPeca(new Rei(tabuleiro,Color.BLACK), new Posicao(0,4));
-        tabuleiro.colocarPeca(new Rei(tabuleiro,Color.WHITE), new Posicao(7,4));
+        colocarNovaPeca('b',6,new Torre(tabuleiro,Color.WHITE));
+        colocarNovaPeca('e',8,new Rei(tabuleiro,Color.BLACK));
+        colocarNovaPeca('e',1, new Rei(tabuleiro,Color.WHITE));
 
     }
 }
