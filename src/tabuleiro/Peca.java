@@ -24,6 +24,7 @@ public abstract class Peca {
     //existe pelo menos um movimento possível?
     public boolean existeAlgumMovimentoPossivel(){
         boolean [][] mat = movimentosPossiveis();
+        //percorrer a matriz de booleano para verificar se tem alguma posição verdadeira
         for(int i = 0; i < mat.length; i++){
             for(int j=0; j < mat.length; j++){
                 if(mat[i][j]){ //se for verdadeiro
