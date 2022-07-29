@@ -34,6 +34,13 @@ public class PartidaXadrez {
         return mat;
     }
 
+
+    public boolean[][] movimentosPossiveis(XadrezPosition posicaoOrigem){
+        Posicao posicao = posicaoOrigem.toPosition();
+        validarPosicaoDeOrigem(posicao);
+        return tabuleiro.peca(posicao).movimentosPossiveis();
+    }
+
     public PecaXadrez movimentarPeca(XadrezPosition posicaoOrigem, XadrezPosition posicaoDestino){
        //converter posições para posições da matriz
         Posicao origem = posicaoOrigem.toPosition();
