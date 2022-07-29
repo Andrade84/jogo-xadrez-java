@@ -59,6 +59,10 @@ public class PartidaXadrez {
         if(!tabuleiro.posicaoExiste(pos)){
             throw new XadrezException("Não existe peça na posição de origem!");
         }
+        //tem algum movimento possível??
+        if(!tabuleiro.peca(pos).existeAlgumMovimentoPossivel()){
+            throw new XadrezException("Não existe movimentos possíveis para a peça escolhida!");
+        }
     }
 
     //receber as coordenadas do xadrez

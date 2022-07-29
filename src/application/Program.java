@@ -19,7 +19,7 @@ public class Program {
 
         while(true) {
             try {
-                UI.clearScreen();
+                UI.limparTela();
                 UI.imprimeTabuleiro(partidaXadrez.getPieces());
                 System.out.println();
                 System.out.print("Origem: ");
@@ -33,7 +33,7 @@ public class Program {
             }
             catch (XadrezException e){
                 System.out.println(e.getMessage());
-                sc.nextLine();
+                sc.nextLine(); //programa aguardar apertar enter
             }
             catch (InputMismatchException e){
                 System.out.println(e.getMessage());
